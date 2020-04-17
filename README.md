@@ -85,6 +85,8 @@ VALUES ('20200416174035_Initial4', '3.1.3');
 ## Instruções para Executar a api
 procure por bin>debug>netcoreapp3.1 e execute HyppeDesafio.exe
 
+Geralmente, são essas url usadas
+
 http://localhost:5000/
 https://localhost:5001/
 
