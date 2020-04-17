@@ -25,7 +25,7 @@ public class EventController : ControllerBase
 
         try
         {
-            var events = await context.Events.AsNoTracking().Where(x => x.UserCreator.Id == user.Id).Include(e => e.EventUsers).ThenInclude(q => q.User).ToListAsync();
+            var events = await context.Events.AsNoTracking().OrderBy(x => x.Date).Where(x => x.UserCreator.Id == user.Id).Include(e => e.EventUsers).ThenInclude(q => q.User).ToListAsync();
             return Ok(events);
         }
         catch
