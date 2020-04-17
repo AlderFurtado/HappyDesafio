@@ -1,4 +1,4 @@
-# HappyDesafio
+# HyppeDesafio
 
 ## Instruções Banco de dados
  - Execute para rodar o banco
