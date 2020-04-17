@@ -64,19 +64,15 @@ public class EventController : ControllerBase
             if (evento == null)
                 return BadRequest(new { message = "Evento não existe" });
 
-
             foreach (var p in participants)
             {
                 int idUser = (int)p.id;
                 var user = new User();
                 user = await context.Users.FirstOrDefaultAsync(x => x.Id == idUser);
 
-                var eventUser = new EventUser
-                {
-                    EventId = evento.Id,
-                    User = user,
-                    UserId = user.Id,
-                };
+                var eventUser = new EventUser();
+                eventUser.UserId = user.Id;
+                eventUser.EventId = id;
 
                 await context.EventUsers.AddAsync(eventUser);
                 await context.SaveChangesAsync();
@@ -125,7 +121,8 @@ public class EventController : ControllerBase
     {
 
 
-        var eventUser = await context.EventUsers.FirstOrDefaultAsync(x => x.Id == id);
+        var evento = await context.Events.FirstOrDefaultAsync(x => x.Id == id);
+        var eventUser = await context.EventUsers.Where(x => x.UserId == int.Parse(this.User.FindFirstValue(ClaimTypes.Sid)) && x.EventId == id).FirstOrDefaultAsync();
 
         if (int.Parse(this.User.FindFirstValue(ClaimTypes.Sid)) != eventUser.UserId)
         {

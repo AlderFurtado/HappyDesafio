@@ -26,9 +26,8 @@ public class UserController : ControllerBase
 
             User newUser = new User();
             newUser.Email = model.Email;
-            newUser.Password = model.Password;
+            newUser.Password = Cript.CalculateHash(model.Password);
 
-            model.Password = Cript.CalculateHash(model.Password);
 
             context.Users.Add(newUser);
             await context.SaveChangesAsync();
@@ -55,7 +54,7 @@ public class UserController : ControllerBase
     [Route("login")]
     public async Task<ActionResult<dynamic>> Login([FromBody]UserLogin model, [FromServices]DataContext context)
     {
-        var user = await context.Users.AsNoTracking().Where(x => x.Email == model.Email).Include(x => x.EventUsers).ThenInclude(x => x.Event).FirstOrDefaultAsync();
+        var user = await context.Users.AsNoTracking().Where(x => x.Email == model.Email).FirstOrDefaultAsync();
 
         if (user == null || !Cript.CheckMatch(user.Password, model.Password))
             return NotFound(new { message = "Usuário ou Senha inválidos" });
