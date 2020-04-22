@@ -1,15 +1,5 @@
 # HyppeDesafio
 
-
-## Caso esteja usando linux ou macos
- ```sh
- sudo add-apt-repository universe
- sudo apt-get update
- sudo apt-get install apt-transport-https
- sudo apt-get update
- sudo apt-get install dotnet-sdk-3.1
-```
-
 ## Instruções para rodar aplicação
  - Execute o comando no terminal
  ```sh
