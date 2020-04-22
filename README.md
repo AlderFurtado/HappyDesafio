@@ -10,6 +10,14 @@
  docker-compose up
 ```
 
+## As credencias do banco de dados
+ ```sh
+ POSTGRES_USER: "postgres"
+ POSTGRES_PASSWORD: "postgres"
+ POSTGRES_DB: "hyppe"
+```
+
+
  - Execute o script para poder modelar o banco
  ```sh
 CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
