@@ -1,9 +1,13 @@
 # HyppeDesafio
 
-## Instruções Banco de dados
- - Execute para rodar o banco
+## Instruções para rodar aplicação
+ - Execute o comando no terminal
  ```sh
- docker-compose -f stack.yml up
+ docker-compose build
+```
+
+ ```sh
+ docker-compose up
 ```
 
  - Execute o script para poder modelar o banco
@@ -83,11 +87,10 @@ VALUES ('20200416174035_Initial4', '3.1.3');
 ```
 
 ## Instruções para Executar a api
-procure por bin>debug>netcoreapp3.1 e execute HyppeDesafio.exe
-
-Geralmente, são essas url usadas
+Uma vez o docker rodando, as endpoints são
 
 http://localhost:5000/
+
 https://localhost:5001/
 
 - Swagger para acompanhar o api mas as requisições precisam ser feitas por algum programa com este fim (uma vez que precisará usar o token JWT)
