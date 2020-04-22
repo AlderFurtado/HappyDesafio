@@ -61,8 +61,8 @@ namespace HyppeDesafio
 
                 };
             });
-
-            services.AddDbContext<DataContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("ConnectionString")));
+            var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+            services.AddDbContext<DataContext>(opt => opt.UseNpgsql(connectionString));
             services.AddScoped<DataContext, DataContext>();
 
         }
